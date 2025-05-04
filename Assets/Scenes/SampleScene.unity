@@ -236,6 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4019823058699281801, guid: 929a2dd9ed82c2f49ba0db38d3ffc15a, type: 3}
+  enemyDoublePrefab: {fileID: 4019823058699281801, guid: 5c32142ddfd639a428a2a4af5f763a14, type: 3}
+  spawnDelay: 5
 --- !u!4 &233641752
 Transform:
   m_ObjectHideFlags: 0

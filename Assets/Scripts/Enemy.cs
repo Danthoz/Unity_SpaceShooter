@@ -4,10 +4,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float speed;
-    // prefab para referenciar el disparo que se va a instanciar
-    [SerializeField] private GameObject disparoPrefab;
-    // puntos donde aparecen los rayos laser
-    [SerializeField] private GameObject spawnPoint;
+    [SerializeField] private GameObject disparoPrefab; // prefab para referenciar el disparo que se va a instanciar 
+    [SerializeField] private GameObject spawnPoint; // puntos donde aparecen los rayos laser
+    [SerializeField] private float shootDelay; //Tiempo de espera entre disparos
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,8 +25,8 @@ public class Enemy : MonoBehaviour
         {
             // se realiza instans del prefab de enemigo
             Instantiate(disparoPrefab, spawnPoint.transform.position, Quaternion.identity);
-            // se espera 1 segundo entre spawns
-            yield return new WaitForSeconds(1f);
+            // se espera X segundos entre spawn de disparos
+            yield return new WaitForSeconds(shootDelay);
         }
     }
    
