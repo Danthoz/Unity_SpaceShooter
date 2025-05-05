@@ -1,20 +1,19 @@
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // se serializa para poder ser modificada desde el editor de unity
-    [SerializeField] private float speed;
-    // se serializa la velocidad entre disparos
-    [SerializeField] private float ratioDisparo;
-    // prefab para referenciar el disparo que se va a instanciar
-    [SerializeField] private GameObject disparoPrefab;
+    [SerializeField] private float speed; // Velocidad de movimiento
+    [SerializeField] private float ratioDisparo; // Velocidad entre disparos
+    [SerializeField] private GameObject disparoPrefab; // prefab del disparo que se va a instanciar
     // puntos donde aparecen los rayos laser
     [SerializeField] private GameObject spawnPoint1;
     [SerializeField] private GameObject spawnPoint2;
-    // se crea contador para llevar el tiempo
-    private float temporizador = 0.5f;
-    // vidas del jugador
-    private float vidas = 5f;
+    [SerializeField] private TextMeshProUGUI scoreText; //Se serializa la puntuación
+    private float temporizador = 0.5f; // se crea contador para llevar el tiempo
+    private int vidas = 3; // variable de vidas del jugador
+    private float score = 0f; // variable para la puntuación del juego
+    public HUD hud;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,12 +23,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Novimiento();
+        Movimiento();
         DelimitarMovimiento();
         Disparar();
+        UpdateScore();
     }
 
-    void Novimiento()
+    void Movimiento()
     {
         // se toma el valor de movimiento en la entrada de manera Vertical
         float inputV = Input.GetAxisRaw("Vertical");
@@ -66,11 +66,18 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyLaser")||other.gameObject.CompareTag("Enemy"))
         {
             vidas -= 1;
+            hud.lostLife(vidas);
             Destroy(other.gameObject);
             if (vidas <= 0)
             {
                 Destroy(gameObject);
             }
         }
+    }
+    
+    void UpdateScore()
+    {
+        score = score + 0.01f ;
+        scoreText.text = "Score: " + (int) score;
     }
 }
