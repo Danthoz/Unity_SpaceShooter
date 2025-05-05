@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Spawner : MonoBehaviour
 {
@@ -8,10 +9,11 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject enemyDoublePrefab;
     [SerializeField] private GameObject enemyBossPrefab;
     [SerializeField] private float spawnDelay; //Tiempo de espera entre spawn
-    [SerializeField] private int enemysUntilBoss; // Numero de enemigos a derrotar antes del boss
+    [SerializeField] private int enemiesUntilBoss; // Numero de enemigos a derrotar antes del boss
     
-    // se crea un contador de los enemigos spawneados 
-    private int enemiesSpawned;
+    
+    private int enemiesSpawned; // se crea un contador de los enemigos spawneados 
+    private int enemiesToLevelUp; // variable para identificar subida de nivel
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,12 +31,13 @@ public class Spawner : MonoBehaviour
     {
         while (true)
         {
-            if (enemiesSpawned < enemysUntilBoss)
+            if (enemiesSpawned < enemiesUntilBoss)
             {
+                enemiesToLevelUp =  enemiesUntilBoss / 2;
                 // se crea la posicion aleatoria en Y, para instanciar enemigos
                 Vector3 RandomPotition = new Vector3(transform.position.x, Random.Range(-4.5f, 4.5f), 0);
 
-                if (enemiesSpawned%2 == 0)
+                if (enemiesSpawned < enemiesToLevelUp)
                 {
                     // se realiza instans del prefab de enemigo
                     Instantiate(enemyPrefab, RandomPotition, Quaternion.identity);

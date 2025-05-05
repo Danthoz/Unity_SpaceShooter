@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyBoss : MonoBehaviour
 {
@@ -55,9 +56,10 @@ public class EnemyBoss : MonoBehaviour
         if (other.gameObject.CompareTag("Laser"))
         {
             Destroy(other.gameObject);
-            if (vidas <= 0)
+            if (vidas < 1)
             {
                 Destroy(gameObject);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
             }
             else
             {

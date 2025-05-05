@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -65,12 +66,16 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyLaser")||other.gameObject.CompareTag("Enemy"))
         {
-            vidas -= 1;
-            hud.lostLife(vidas);
             Destroy(other.gameObject);
-            if (vidas <= 0)
+            if (vidas <= 1)
             {
                 Destroy(gameObject);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                vidas -= 1;
+                hud.lostLife(vidas);
             }
         }
     }
