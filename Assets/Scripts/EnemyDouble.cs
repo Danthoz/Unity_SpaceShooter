@@ -23,7 +23,6 @@ public class EnemyDouble : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.Translate(new Vector3(-1, 0, 0) * (Time.deltaTime * speed));
         // Se implementa movimiento oscilatorio con función seno
         float yOffset = Mathf.Sin(Time.time * frequency) * amplitude;
         Vector3 movement = new Vector3(-1, yOffset, 0).normalized * (speed * Time.deltaTime);

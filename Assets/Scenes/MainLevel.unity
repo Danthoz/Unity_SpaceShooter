@@ -238,8 +238,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 4019823058699281801, guid: 929a2dd9ed82c2f49ba0db38d3ffc15a, type: 3}
   enemyDoublePrefab: {fileID: 4019823058699281801, guid: 5c32142ddfd639a428a2a4af5f763a14, type: 3}
   enemyBossPrefab: {fileID: 4019823058699281801, guid: 440444c27b0bbdc43bf349cb05ee595d, type: 3}
-  spawnDelay: 5
-  enemysUntilBoss: 5
+  spawnDelay: 3
+  enemiesUntilBoss: 10
 --- !u!4 &233641752
 Transform:
   m_ObjectHideFlags: 0
@@ -2604,7 +2604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   ratioDisparo: 0.5
-  disparoPrefab: {fileID: 409170356010678975, guid: 608295771227d994ca9d9c87a2eaa494, type: 3}
+  disparoPrefab: {fileID: 4917709752407524065, guid: 608295771227d994ca9d9c87a2eaa494, type: 3}
   spawnPoint1: {fileID: 1132711598}
   spawnPoint2: {fileID: 478150545}
   scoreText: {fileID: 258066849}
